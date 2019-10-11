@@ -22,6 +22,11 @@ namespace CustomVision.Lego
             {
                 FirstPart = parts[0].ToLower();
                 SecondPart = parts[1].ToLower();
+
+                if (SecondPart == "4x1") SecondPart = "1x4";
+                if (SecondPart == "4x2") SecondPart = "2x4";
+                if (SecondPart == "3x2") SecondPart = "2x3";
+                if (SecondPart == "6x1") SecondPart = "1x6";
             }
         }
         public string Color()
@@ -31,7 +36,15 @@ namespace CustomVision.Lego
 
         public bool IsBlock()
         {
-            return (SecondPart == "2x4") || (SecondPart == "2x3") || (SecondPart == "2x2") || (SecondPart == "1x4") || (SecondPart == "1x6");
+            return (SecondPart == "2x2") 
+                || (SecondPart == "2x4") 
+                || (SecondPart == "3x2") 
+                || (SecondPart == "2x3")
+                || (SecondPart == "2x2") 
+                || (SecondPart == "1x4")
+                || (SecondPart == "4x1")
+                || (SecondPart == "1x6")
+                || (SecondPart == "6x1");
         }
 
         public bool IsFigure()

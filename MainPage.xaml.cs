@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -28,8 +29,9 @@ namespace CustomVision.Lego
     public sealed partial class MainPage : Page
     {
         const string predictionKey = "";
-        const string CustomVisionEndpoint = "https://southcentralus.api.cognitive.microsoft.com";
-        Guid projectId = new System.Guid("");
+        const string CustomVisionEndpoint = "https://westeurope.api.cognitive.microsoft.com";
+        const string projectId = "";
+        const string iterationName = "Iteration1";
 
         MediaCapture mediaCapture;
         bool isPreviewing;
@@ -50,7 +52,6 @@ namespace CustomVision.Lego
 
             Application.Current.Suspending += Application_Suspending;
         }
-
 
         private async Task StartPreviewAsync()
         {
@@ -189,13 +190,18 @@ namespace CustomVision.Lego
 
                 try
                 {
-                    var result = endpoint.PredictImage(projectId, stream);
+                    Stopwatch sp = new Stopwatch();
+                    sp.Start();
+                    var result = endpoint.ClassifyImage( new System.Guid(projectId), iterationName, stream);
 
                     foreach (var c in result.Predictions)
                     {
                         predictions.Add(new Prediction(c));
                         sb.AppendFormat($"{c.TagName}: {c.Probability:P1}\n");
                     }
+
+                    sb.AppendFormat($"Prediction took {sp.ElapsedMilliseconds}ms\n");
+                    sp.Stop();
                 }
                 catch (Exception ex)
                 {
@@ -236,7 +242,7 @@ namespace CustomVision.Lego
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            StartPreviewAsync();
+            Task task = StartPreviewAsync();
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
@@ -261,7 +267,7 @@ namespace CustomVision.Lego
         {
 
             dispatcherTimer.Stop();
-            CleanupCameraAsync();
+            Task task= CleanupCameraAsync();
         }
     }
 }

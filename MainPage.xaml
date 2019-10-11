@@ -9,12 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Height="990" VerticalAlignment="Top" HorizontalAlignment="Stretch">
-        <Button Content="Start Tracking" HorizontalAlignment="Left" Margin="31,0,0,0" VerticalAlignment="Center" Click="Button_Click" RenderTransformOrigin="0.498,-3.104"/>
-        <TextBlock x:Name="Output" HorizontalAlignment="Left" Margin="858,413,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="496" Width="638" RenderTransformOrigin="0.497,0.462" FontSize="20"/>
-        <CaptureElement Name="PreviewControl" Stretch="Uniform" Margin="10,10,647,524"/>
-        <Button Content="Stop Tracking&#xD;&#xA;" HorizontalAlignment="Left" Margin="175,0,0,0" VerticalAlignment="Center" Height="32" Click="Button_Click_1"/>
-        <TextBlock x:Name="CountDown" HorizontalAlignment="Left" Margin="331,471,0,0" Text="-" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="296" FontSize="36"/>
-        <Rectangle x:Name="ImageColor" HorizontalAlignment="Left" Height="56" Margin="858,39,0,0" VerticalAlignment="Top" Width="308" FocusVisualPrimaryBrush="Red" Fill="Black"/>
-        <Image x:Name="ImagePreview" HorizontalAlignment="Left" Height="308" Margin="858,100,0,0" VerticalAlignment="Top" Width="311" RenderTransformOrigin="0.427,0.175" Source="/Assets/lego.jpg"/>
+        <Button Content="Start Tracking" Margin="10,442,0,0" VerticalAlignment="Top" Click="Button_Click" RenderTransformOrigin="0.498,-3.104"/>
+        <TextBlock x:Name="Output" HorizontalAlignment="Left" Margin="329,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="360" Width="484" RenderTransformOrigin="0.497,0.462" FontSize="20"/>
+        <CaptureElement Name="PreviewControl" Stretch="Uniform" Margin="817,10,0,624"/>
+        <Button Content="Stop Tracking&#xD;&#xA;" Margin="134,442,0,0" VerticalAlignment="Top" Height="32" Click="Button_Click_1"/>
+        <TextBlock x:Name="CountDown" HorizontalAlignment="Left" Margin="10,474,0,0" Text="Welcome!" TextWrapping="Wrap" VerticalAlignment="Top" Height="60" Width="296" FontSize="36"/>
+        <Rectangle x:Name="ImageColor" HorizontalAlignment="Left" Height="56" Margin="10,323,0,0" VerticalAlignment="Top" Width="308" FocusVisualPrimaryBrush="Red" Fill="Black" RenderTransformOrigin="-2.287,5.652"/>
+        <Image x:Name="ImagePreview" HorizontalAlignment="Left" Height="308" Margin="10,10,0,0" VerticalAlignment="Top" Width="311" RenderTransformOrigin="0.427,0.175" Source="/Assets/lego.jpg"/>
     </Grid>
 </Page>
